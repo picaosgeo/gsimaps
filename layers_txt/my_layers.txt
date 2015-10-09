@@ -15,7 +15,22 @@
         "cocotile": true,
         "legendUrl": "http://maps.gsi.go.jp/development/ichiran.html#std",
         "html": "<a href='https://github.com/picaosgeo/gsimaps/edit/gh-pages/layers_txt/my_layers.txt'>編集</a>"
+        },
+        {
+          "type": "Layer",
+          "id": "example231",
+          "title": "地底領土",
+          "iconUrl": "",
+          "url": "http://picaosgeo.github.io/gsimaps/example231/{z}/{x}/{y}.geojson",
+          "subdomains": "",
+          "attribution": "",
+          "cocotile": true,
+          "legendUrl": "http://maps.gsi.go.jp/development/ichiran.html#std",
+          "html": "<a href='https://github.com/picaosgeo/gsimaps/edit/gh-pages/layers_txt/my_layers.txt'>編集</a>",
+          "maxZoom": 18,
+          "maxNativeZoom": 2
         }
+
       ]
     }
   ]
