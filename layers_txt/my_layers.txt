@@ -1,16 +1,22 @@
 {
   "layers": [
     {
-      "type": "Layer",
-      "id": "std",
-      "title": "地底標準地図",
-      "iconUrl": "",
-      "url": "http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png",
-      "subdomains": "",
-      "attribution": "",
-      "cocotile": true,
-      "legendUrl": "http://maps.gsi.go.jp/development/ichiran.html#std",
-      "html": ""
+    "type": "LayerGroup",
+    "title":"地底レイヤ",
+    "entries":[
+      {
+        "type": "Layer",
+        "id": "std",
+        "title": "地底標準地図",
+        "iconUrl": "",
+        "url": "http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png",
+        "subdomains": "",
+        "attribution": "",
+        "cocotile": true,
+        "legendUrl": "http://maps.gsi.go.jp/development/ichiran.html#std",
+        "html": "<a href='https://github.com/picaosgeo/gsimaps/edit/gh-pages/layers_txt/my_layers.txt'>編集</a>"
+        }
+      ]
     }
   ]
 }
