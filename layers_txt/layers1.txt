@@ -234,17 +234,40 @@
           "html": "<div class=\"gsi_layerinfo_title\">色別標高図</div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
         },
         {
-          "type": "Layer",
-          "id": "fm",
+          "type": "LayerGroup",
           "title": "都市圏活断層図",
           "iconUrl": "",
-          "url": "http://cyberjapandata.gsi.go.jp/xyz/AFM/{z}/{x}/{y}.png",
-          "subdomains": "",
-          "attribution": "",
-          "cocotile": true,
-          "maxZoom": 16,
-          "legendUrl": "http://www.gsi.go.jp/common/000084060.pdf",
-          "html": "<div class=\"gsi_layerinfo_title\">都市圏活断層図</div><div class=\"gsi_layerinfo_kaisetu\"><a target=\"_blank\" href=\"http://www.gsi.go.jp/bousaichiri/guidebook.html\">解説</a></div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
+          "open": false,
+          "toggleall": false,
+          "entries": [
+            {
+              "type": "Layer",
+              "id": "afm",
+              "title": "都市圏活断層図",
+              "iconUrl": "",
+              "url": "http://cyberjapandata.gsi.go.jp/xyz/afm/{z}/{x}/{y}.png",
+              "subdomains": "",
+              "attribution": "",
+              "cocotile": true,
+              "maxZoom": 16,
+              "legendUrl": "http://www.gsi.go.jp/common/000084060.pdf",
+              "html": "<div class=\"gsi_layerinfo_title\">都市圏活断層図</div><div class=\"gsi_layerinfo_kaisetu\"><a target=\"_blank\" href=\"http://www.gsi.go.jp/bousaichiri/guidebook.html\">解説</a></div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
+        },
+        {
+              "type": "Layer",
+              "id": "afm_spec",
+              "title": "諸元情報",
+              "iconUrl": "",
+              "url": "http://cyberjapandata.gsi.go.jp/xyz/afm_spec/{z}/{x}/{y}.geojson",
+              "subdomains": "",
+              "attribution": "",
+              "cocotile": false,
+              "maxZoom": 16,
+              "maxNativeZoom": 2,
+              "legendUrl": "",
+              "html": "図上クリックすると諸元が表示されます。<br><a href=\"http://www.gsi.go.jp/bousaichiri/inspection.html\" target=\"_blank\">整備一覧</a>"
+            }
+          ]
         },
         {
           "type": "Layer",
@@ -349,8 +372,8 @@
               "cocotile": true,
               "minZoom": 2,
               "maxZoom": 16,
-              "legendUrl": "http://www1.gsi.go.jp/geowww/lcmfc/hanrei.gif",
-              "html": "<div class=\"gsi_layerinfo_title\">治水地形分類図-初版(1976～1978年)</div><div class=\"gsi_layerinfo_kaisetu\"><div><a target=\"_blank\" href=\"http://www1.gsi.go.jp/geowww/lcmfc/lcmfc.html\">解説</a></div></div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
+              "legendUrl": "http://cyberjapandata.gsi.go.jp/xyz/LCMFC01/chisui-syohan-hanrei.gif",
+              "html": "<div class=\"gsi_layerinfo_title\">治水地形分類図-初版(1976～1978年)</div><div class=\"gsi_layerinfo_kaisetu\"><div><a target=\"_blank\" href=\"http://www.gsi.go.jp/bousaichiri/fc_index.html\">解説</a></div></div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
             },
             {
               "type": "Layer",
@@ -364,7 +387,7 @@
               "minZoom": 5,
               "maxZoom": 16,
               "legendUrl": "http://cyberjapandata.gsi.go.jp/xyz/LCMFC02/fc_legend02.jpg",
-              "html": "<div class=\"gsi_layerinfo_title\">治水地形分類図-更新版(2007～2014年)</div><div class=\"gsi_layerinfo_kaisetu\"><div><a target=\"_blank\" href=\"http://www1.gsi.go.jp/geowww/lcmfc/lcmfc.html\">解説</a></div></div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
+              "html": "<div class=\"gsi_layerinfo_title\">治水地形分類図-更新版(2007～2014年)</div><div class=\"gsi_layerinfo_kaisetu\"><div><a target=\"_blank\" href=\"http://www.gsi.go.jp/bousaichiri/fc_index.html\">解説</a></div></div><div class=\"gsi_layerinfo_copy\">(c)国土地理院</div>"
             }
           ]
         },
@@ -2494,6 +2517,20 @@
                       "maxZoom": 12,
                       "legendUrl": "",
                       "html": ""
+                    },
+                    {
+                      "type": "Layer",
+                      "id": "kiban_koushin2015_10",
+                      "title": "10月更新",
+                      "iconUrl": "",
+                      "url": "http://cyberjapandata.gsi.go.jp/xyz/fgd_update/2015-10/{z}/{x}/{y}.png",
+                      "subdomains": "",
+                      "attribution": "",
+                      "cocotile": false,
+                      "minZoom": 4,
+                      "maxZoom": 12,
+                      "legendUrl": "",
+                      "html": ""
                     }
                   ]
                 },
@@ -2553,6 +2590,30 @@
               "open": false,
               "toggleall": false,
               "entries": [
+                {
+                  "type": "Layer",
+                  "id": "jin2015010",
+                  "title": "10月更新",
+                  "iconUrl": "http://cyberjapandata.gsi.go.jp/portal/sys/v4/symbols/102.png",
+                  "url": "http://cyberjapandata.gsi.go.jp/overlay/update_std/data/jinsoku2015/201510.kml",
+                  "subdomains": "",
+                  "attribution": "",
+                  "cocotile": false,
+                  "legendUrl": "",
+                  "html": ""
+                },
+                {
+                  "type": "Layer",
+                  "id": "jin201509",
+                  "title": "9月更新",
+                  "iconUrl": "http://cyberjapandata.gsi.go.jp/portal/sys/v4/symbols/101.png",
+                  "url": "http://cyberjapandata.gsi.go.jp/overlay/update_std/data/jinsoku2015/201509.kml",
+                  "subdomains": "",
+                  "attribution": "",
+                  "cocotile": false,
+                  "legendUrl": "",
+                  "html": ""
+                },
                 {
                   "type": "Layer",
                   "id": "jin201508",
@@ -2658,6 +2719,30 @@
               "open": false,
               "toggleall": false,
               "entries": [
+                {
+                  "type": "Layer",
+                  "id": "men201510",
+                  "title": "10月更新",
+                  "iconUrl": "",
+                  "url": "http://cyberjapandata.gsi.go.jp/overlay/update_std/data/men2015/201510.kml",
+                  "subdomains": "",
+                  "attribution": "",
+                  "cocotile": false,
+                  "legendUrl": "",
+                  "html": ""
+                },
+                {
+                  "type": "Layer",
+                  "id": "men201509",
+                  "title": "9月更新",
+                  "iconUrl": "",
+                  "url": "http://cyberjapandata.gsi.go.jp/overlay/update_std/data/men2015/201509.kml",
+                  "subdomains": "",
+                  "attribution": "",
+                  "cocotile": false,
+                  "legendUrl": "",
+                  "html": ""
+                },
                 {
                   "type": "Layer",
                   "id": "men201508",

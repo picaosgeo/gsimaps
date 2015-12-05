@@ -481,6 +481,12 @@ CONFIG.FUNCMENU = {
 					checkCondition : function() { return GSI.GeoLocation.can; }
 				},
 				{
+					id : 'ucode',
+					title : '場所情報コード',
+					arrow : true,
+					href : 'ucodehref'//'http://ucopendb.gsi.go.jp/ucode_app/logical_code/ucode_disp.php?lat={y}&lng={x}&zoom={z}'
+				},
+				{
 					title : '共有',
 					arrow : true,
 					childrenWidth:200,
@@ -4832,7 +4838,8 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
 			var opacitySlider = $( '<div>' ).addClass( 'slider' );
 
 			var opacity = ( item._visibleInfo ? item._visibleInfo.opacity : 1 );
-			var opacityPercentage = Math.floor((1 - opacity) * 100);
+			var opacityPercentage = Math.round( 100 - ( opacity * 100 ) ) ;
+			
 			var opacityTextColumn = $( '<td>' ).css( {"width":"100px"} );
 			opacityTextColumn.text('透過率:'+opacityPercentage+'%').css( {"white-space":"nowrap"} );
 			tr.append( opacityTextColumn );
@@ -4853,7 +4860,7 @@ GSI.LayerTreeDialog = GSI.Dialog.extend( {
 				if ( item._opacityChange ) item._opacityChange( opacity );
 			}, this,item,opacitySlider );
 
-			opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.floor(( 1 - opacity ) * 100 ),
+			opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.round( 100 - ( opacity  * 100 ) ),
 				"slide" : sliderChangeHandler,
 				"change" : sliderChangeHandler,
 				"stop" : sliderChangeHandler
@@ -5455,7 +5462,7 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
 		var opacitySlider = $( '<div>' ).addClass( 'slider' );
 
 		var opacity = ( item._visibleInfo ? item._visibleInfo.opacity : 1 );
-		var opacityPercentage = Math.floor(parseInt((1 - opacity) * 100));
+		var opacityPercentage = Math.round( 100 - ( opacity * 100 ) );
 		var opacityTextColumn = $( '<td>' ).css( {"width":"100px"} );
 		opacityTextColumn.text('透過率:'+opacityPercentage+'%').css( {"white-space":"nowrap"} );
 		tr.append( opacityTextColumn );
@@ -5474,7 +5481,7 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
 		item._opacityChange = function(opacity)
 		{
 			if ( opacitySlider )
-				opacitySlider.slider( 'value', (1 - opacity ) * 100 );
+				opacitySlider.slider( 'value', Math.round( 100 - ( opacity * 100 ) ) );
 		};
 
 		var sliderChangeHandler = L.bind( function(li, opacitySlider) {
@@ -5488,7 +5495,7 @@ GSI.ViewListDialog = GSI.Dialog.extend( {
 			item._visibleInfo.opacity = opacity;
 		}, this,li,opacitySlider );
 
-		opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.floor(( 1 - opacity ) * 100 ),
+		opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.round( 100 - ( opacity * 100 ) ),
 			"slide" : sliderChangeHandler,
 			"change" : sliderChangeHandler,
 			"stop" : sliderChangeHandler
@@ -6454,8 +6461,8 @@ GSI.MeasureDialog = GSI.Dialog.extend( {
 	{
 		if ( this.polyLin ) return;
 		L.drawLocal.draw.handlers.polyline.tooltip.start = '開始位置を選択';
-		L.drawLocal.draw.handlers.polyline.tooltip.cont = '次の位置を選択(最終点をクリックで終了)';
-		L.drawLocal.draw.handlers.polyline.tooltip.end = '次の位置を選択(最終点をクリックで終了)';
+		L.drawLocal.draw.handlers.polyline.tooltip.cont = '次の位置を選択(最終点を2回クリックして終了)';
+		L.drawLocal.draw.handlers.polyline.tooltip.end = '次の位置を選択(最終点を2回クリックして終了)';
 
 		this.polyLine =  new GSI.Draw.Polyline(this.map,{
 			shapeOptions: {
@@ -6481,7 +6488,7 @@ GSI.MeasureDialog = GSI.Dialog.extend( {
 		if ( this.polygon ) return;
 		L.drawLocal.draw.handlers.polygon.tooltip.start = '開始位置を選択';
 		L.drawLocal.draw.handlers.polygon.tooltip.cont = '次の位置を選択';
-		L.drawLocal.draw.handlers.polygon.tooltip.end = '次の位置を選択(最終点をクリックで終了)';
+		L.drawLocal.draw.handlers.polygon.tooltip.end = '次の位置を選択(最終点を2回クリックして終了)';
 
 		this.polygon =  new GSI.Draw.Polygon(this.map,{
 			shapeOptions: {
@@ -7827,8 +7834,8 @@ GSI.SakuzuListItem = L.Class.extend( {
 	{
 		// ライン編集開始
 		L.drawLocal.draw.handlers.polyline.tooltip.start = '開始位置を選択';
-		L.drawLocal.draw.handlers.polyline.tooltip.cont = '次の位置を選択(最終点をクリックで終了)';
-		L.drawLocal.draw.handlers.polyline.tooltip.end = '次の位置を選択(最終点をクリックで終了)';
+		L.drawLocal.draw.handlers.polyline.tooltip.cont = '次の位置を選択(最終点を2回クリックして終了)';
+		L.drawLocal.draw.handlers.polyline.tooltip.end = '次の位置を選択(最終点を2回クリックして終了)';
 
 		this._editingPathList = [];
 
@@ -7856,7 +7863,7 @@ GSI.SakuzuListItem = L.Class.extend( {
 		// ポリゴン編集開始
 		L.drawLocal.draw.handlers.polygon.tooltip.start = '開始位置を選択';
 		L.drawLocal.draw.handlers.polygon.tooltip.cont = '次の位置を選択';
-		L.drawLocal.draw.handlers.polygon.tooltip.end = '次の位置を選択(最終点をクリックで終了)';
+		L.drawLocal.draw.handlers.polygon.tooltip.end = '次の位置を選択(最終点を2回クリックして終了)';
 
 		this._editingPathList = [];
 
@@ -10643,7 +10650,7 @@ GSI.SakuzuDialog = GSI.Dialog.extend( {
 			this._lineWeightSelect.val( style.weight );
 			this._lineColorSelector.css( { background:style.color } );//.ColorPickerSetColor(style.color);
 			var opacity = style.opacity;
-			opacity = Math.floor( ( 1-opacity ) * 100 );
+			opacity = Math.round( ( 1-opacity ) * 100 );
 			this._lineOpacitySlider.slider( "value", opacity );
 		}
 
@@ -10652,7 +10659,7 @@ GSI.SakuzuDialog = GSI.Dialog.extend( {
 		{
 			this._fillColorSelector.css( { background:style.fillColor } );//.ColorPickerSetColor(style.fillColor);
 			var opacity = style.fillOpacity;
-			opacity = Math.floor( ( 1-opacity ) * 100 );
+			opacity = Math.round( ( 1-opacity ) * 100 );
 			this._fillOpacitySlider.slider( "value", opacity );
 		}
 		
@@ -13495,7 +13502,7 @@ GSI.UTM.Utils = {
 		if ( defName == '' ) return '';
 
 		var projUTM = new Proj4js.Proj(defName);
-		var latLngPoint = new Proj4js.Point(lng,lat );
+		var latLngPoint = new Proj4js.Point( lng,lat );
 		var utmPoint = Proj4js.transform(GSI.UTM.Utils.PROJ_WORLD,projUTM,latLngPoint);
 
 		return GSI.UTM.Utils.getUTMPointName(
@@ -13508,7 +13515,6 @@ GSI.UTM.Utils = {
 	},
 	getUTMPointName : function( zone, mark, x, y, num, hideNumber)
 	{
-		var letters = GSI.UTM.Utils.findGridLetters(zone, y, x);
 
 		var x10mNumber = '';
 		var y10mNumber = '';
@@ -13525,7 +13531,8 @@ GSI.UTM.Utils = {
 			y10mNumber = zero + Math.round( y /10 );
 			y10mNumber = y10mNumber.substr(y10mNumber.length - num, num);
 		}
-
+		
+		var letters = GSI.UTM.Utils.findGridLetters(zone, Math.round( y /10 ) * 10, Math.round( x /10 ) * 10);
 		return zone + mark + letters + x10mNumber + y10mNumber;
 	},
 	findSet : function(zoneNum)
@@ -15575,6 +15582,10 @@ GSI.Links.getURL = function( id, center, z ) {
 
 		return "http://www.its-mo.com/z-" + y +"-" + x + "-" + zoomLevel + ".htm";
 	}
+	else if ( id == 'ucodehref' )
+	{
+		return 'http://ucopendb.gsi.go.jp/ucode_app/logical_code/ucode_disp.php?lat=' + center.lat +'&lng=' + center.lng + '&zoom=' + z;
+	}
 	else
 	{
 		return id;
@@ -15701,7 +15712,7 @@ GSI.BaseLayerSelector = L.Class.extend( {
 				this.baseLayer.setOpacity( opacity );
 			}, this, opacitySlider );
 
-		opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.floor(( 1 - opacity ) * 100 ),
+		opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.round( 100 - ( opacity * 100 ) ),
 			"slide" : sliderChangeHandler,
 			"change" : sliderChangeHandler,
 			"stop" : sliderChangeHandler
@@ -15929,7 +15940,7 @@ GSI.Control.BaseLayerSelector = L.Control.extend({
 					this.baseLayer.setOpacity( opacity );
 				}, this, opacitySlider );
 
-			opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.floor(( 1 - opacity ) * 100 ),
+			opacitySlider.slider({range: "min",min: 0,max: 100, value: Math.round( 100 - ( opacity * 100 ) ),
 				"slide" : sliderChangeHandler,
 				"change" : sliderChangeHandler,
 				"stop" : sliderChangeHandler
